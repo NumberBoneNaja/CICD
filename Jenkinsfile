@@ -6,29 +6,20 @@ pipeline {
     }
 
     stages {
-        stage('Clone') {
-            steps {
-                echo "Cloning repo..."
-                checkout scm
-            }
-        }
-
         stage('Build') {
             steps {
                 echo "Building project..."
+                sh 'ls -la' // ตรวจสอบว่ามีโฟลเดอร์ frontend ไหม
                 dir('frontend') {
-                    sh 'pwd'
-                    sh 'ls -la'
                     sh 'npm install'
                 }
             }
         }
 
-
         stage('Test') {
             steps {
                 echo "Running tests..."
-                // ถ้ามี test script ใน package.json ก็ใส่ได้ เช่น:
+                // ถ้ามี test script ใน package.json
                 // dir('frontend') {
                 //     sh 'npm run test'
                 // }
@@ -39,10 +30,22 @@ pipeline {
             steps {
                 dir('frontend') {
                     echo "Deploying to Firebase Hosting..."
-                    sh 'npm install -g firebase-tools'
+                    sh 'npm install -g firebase-tools' // หรือใช้ npx
                     sh "firebase deploy --only hosting --token $FIREBASE_TOKEN"
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            echo "Pipeline finished"
+        }
+        success {
+            echo "✅ Deployment success!"
+        }
+        failure {
+            echo "❌ Deployment failed!"
         }
     }
 }
