@@ -9,10 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building project..."
-                sh 'ls -la' // ตรวจสอบว่ามีโฟลเดอร์ frontend ไหม
-                dir('frontend') {
-                    sh 'npm install'
-                }
+                sh 'npm install'
             }
         }
 
