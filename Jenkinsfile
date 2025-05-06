@@ -9,8 +9,6 @@ pipeline {
             steps {
                 echo "Building project..."
                 sh '''
-                    apt update
-                    apt install -y nodejs npm
                     cd frontend
                     npm install
                     npm run build
