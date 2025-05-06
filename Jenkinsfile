@@ -9,7 +9,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building project..."
-                sh 'npm install'
+                dir('frontend') {
+                    sh 'npm install'
+                }
             }
         }
 
