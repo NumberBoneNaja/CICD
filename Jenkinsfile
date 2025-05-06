@@ -28,7 +28,7 @@ pipeline {
                 echo "Deploying..."
                 dir('frontend') {
                     // ติดตั้ง firebase-tools ถ้ายังไม่ได้ติดตั้ง
-                    sh 'npm install firebase-tools --save-dev'
+                    // sh 'npm install firebase-tools --save-dev'
                     
                     // ใช้ path ที่ถูกต้องสำหรับ firebase-tools
                     sh './node_modules/.bin/firebase deploy --token $FIREBASE_TOKEN'
