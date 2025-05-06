@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:16'  // ใช้ Docker image ที่มี Node.js 16
+            args '-u root:root'  // สามารถเพิ่ม arg หากต้องการให้ run เป็น root
+        }
+    }
 
     environment {
         FIREBASE_TOKEN = credentials('c77f1ccf-b9b3-4337-8fb5-1b0b22f36f31')
