@@ -8,8 +8,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building project..."
-                sh 'cd frontend'
-                sh 'npm run build'
+                sh '''
+                    apt update
+                    apt install -y nodejs npm
+                    cd frontend
+                    npm install
+                    npm run build
+                '''
             }
         }
         stage('Test') {
