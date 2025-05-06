@@ -8,11 +8,12 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building project..."
-                sh '''
-                    cd frontend
-                    npm install
-                    npm run build
-                '''
+                dir('frontend') {
+                    sh '''
+                        npm install
+                        npm run build
+                    '''
+                }
             }
         }
         stage('Test') {
@@ -23,7 +24,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deploying..."
-                sh "npx firebase deploy --token $FIREBASE_TOKEN"
+                
+                dir('frontend') {
+                    sh "firebase deploy --token $FIREBASE_TOKEN"
+                }
             }
         }
 
