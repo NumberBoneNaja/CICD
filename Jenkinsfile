@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building project..."
-                sh 'npm install'
+                sh 'cd frontend'
                 sh 'npm run build'
             }
         }
