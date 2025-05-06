@@ -15,15 +15,15 @@ pipeline {
 
         stage('Build') {
             steps {
+                echo "Building project..."
                 dir('frontend') {
-                    echo "Installing dependencies..."
+                    sh 'pwd'
+                    sh 'ls -la'
                     sh 'npm install'
-
-                    echo "Building project..."
-                    sh 'npm run build'
                 }
             }
         }
+
 
         stage('Test') {
             steps {
