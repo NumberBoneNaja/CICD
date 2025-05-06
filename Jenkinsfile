@@ -26,6 +26,7 @@ pipeline {
                 echo "Deploying..."
                 
                 dir('frontend') {
+                    sh 'npm install firebase-tools --save-dev'
                     sh "firebase deploy --token $FIREBASE_TOKEN"
                 }
             }
