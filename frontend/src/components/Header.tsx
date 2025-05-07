@@ -7,7 +7,7 @@ const Header = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Heart className="w-6 h-6 text-pink-500" />
-            <h1 className="text-xl font-light tracking-wide text-gray-800">ไก่ทอดทรงเสน่ห์</h1>
+            <h1 className="text-xl font-light tracking-wide text-gray-800">ไก่ทอดทรงเสน่ห์ 🍗 หรอว่ะ</h1>
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#" className="text-gray-600 hover:text-gray-900 text-sm font-light transition-colors">หน้าหลัก</a>
